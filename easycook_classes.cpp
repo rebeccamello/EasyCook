@@ -6,7 +6,6 @@ class Chefe{
     string username;
     string senha;
     string email;
-    string foto;
     Receita favoritadas[100];
     Receita postadas[100];
     bool verificado;
