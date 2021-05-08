@@ -6,10 +6,6 @@
 --------------------------
 
 ### Modules necessários para rodar a aplicação
-pip install flask
-
-pip install flask-login
-
-pip install flash-sqlalchemy
+pip install flask<br>pip install flask-login<br>pip install flash-sqlalchemy
 
 para executar: rodar pelo main.py
