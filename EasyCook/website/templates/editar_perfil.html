@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Editar perfil{% endblock %}
+
+{% block conteudo %}
+<div class="container">
+    <h2 align="center">Editar perfil</h3>
+        <br>
+        <form method="POST" enctype="multipart/form-data">
+            <div class="row file-field input-field">
+                <div style="display:flex; flex-wrap: wrap; justify-content: center; align-items:center;">
+                    <div class="btn">
+                        <i class="material-icons">add</i>
+                        <input type="file" accept=".jpg" name="imagem">
+                    </div>
+                </div>
+            </div>
+            <div class="center-align">
+                <p>Imagem de perfil</p>
+            </div>
+            <br>
+            <div class="row">
+                <div class="input-field col s5 offset-s1">
+                    <input disabled value="{{user.username}}" id="disabled" type="text">
+                    <label for="disabled">Username</label>
+                </div>
+                <div class="input-field col s5 offset-s1">
+                    <input value="{{user.nome}}" id="nome" type="text", name="nome">
+                    <label for="nome">Nome</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s5 offset-s1">
+                    <input value="{{user.email}}" id="email" type="text", name="email">
+                    <label for="email">Email</label>
+                </div>
+            </div>
+            <div class="center-align">
+                <button class="btn waves-effect waves-light" type="submit" name="action">Editar
+                    <i class="material-icons right">edit</i>
+                </button>
+            </div>
+        </form>
+</div>
+{% endblock %}

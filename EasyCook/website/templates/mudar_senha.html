@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Mudar senha{% endblock %}
+
+{% block conteudo %}
+<div class="container">
+    <h2 align="center">Mudar senha</h3>
+        <br>
+        <form method="POST">
+            <div class="row">
+                <div class="input-field col s5 offset-s1">
+                    <input id="nome" type="password", name="senha1">
+                    <label for="nome">Senha</label>
+                </div>
+                <div class="input-field col s5 offset-s1">
+                    <input id="nome" type="password", name="senha2">
+                    <label for="nome">Repetir senha</label>
+                </div>
+            </div>
+            <div class="center-align">
+                <button class="btn waves-effect waves-light" type="submit" name="action">Mudar
+                    <i class="material-icons right">edit</i>
+                </button>
+            </div>
+        </form>
+</div>
+{% endblock %}
