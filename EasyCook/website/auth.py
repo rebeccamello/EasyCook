@@ -47,22 +47,16 @@ def sign_up():
             flash('Username já existente', category='error')
         elif user_email:
             flash('Email já cadastrado', category='error')
-        elif len(username) < 3:
-            flash('Username muito curto', category='error')
-        elif len(username) > 30:
-            flash('Username muito comprido', category='error')
-        elif len(email) < 4:
-            flash('Email muito curto', category='error')
-        elif len(email) > 150:
-            flash('Email muito comprido', category='error')
-        elif len(nome) < 2:
-            flash('Nome muito curto', category='error')
-        elif len(nome) > 150:
-            flash('Nome muito comprido', category='error')
+        elif len(username) < 3 or len(username) > 30:
+            flash('Username deve ter entre 3 e 30 caracteres', category='error')
+        elif len(email) < 4 or len(email) > 150:
+            flash('Email deve ter entre 4 e 150 caracteres', category='error')
+        elif len(nome) < 2 or len(nome) > 150:
+            flash('Nome deve ter entre 2 e 150 caracteres', category='error')
+        elif len(senha1) < 7 or len(senha1) > 150:
+            flash('Senha deve ter entre 7 e 150 caracteres', category='error')
         elif senha1 != senha2:
             flash('Senhas nao coincidem', category='error')
-        elif len(senha1) < 7:
-            flash('Senha muito curta', category='error')
         else:
             new_user = User(username=username, nome=nome, email=email, senha=generate_password_hash(senha1, method='sha256'))
             db.session.add(new_user)

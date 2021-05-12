@@ -36,14 +36,10 @@ def editar_perfil():
         user_email = User.query.filter_by(email=email).first()
         if user_email and user_email != current_user:
             flash('Email ja cadastrado', category='error')
-        elif len(email) < 4:
-            flash('Email muito curto', category='error')
-        elif len(email) > 150:
-            flash('Email muito comprido', category='error')
-        elif len(nome) < 2:
-            flash('Nome muito curto', category='error')
-        elif len(nome) > 150:
-            flash('Nome muito comprido', category='error')
+        elif len(email) < 4 or len(email) > 150:
+            flash('Email deve ter entre 4 e 150 caracteres', category='error')
+        elif len(nome) < 2 or len(nome) > 150:
+            flash('Nome deve ter entre 2 e 150 caracteres', category='error')
         else:
             user = User.query.filter_by(username=current_user.username).first()
             user.nome = nome
@@ -63,10 +59,10 @@ def mudar_senha():
         user = User.query.filter_by(username=current_user.username).first()
         if check_password_hash(user.senha, senha1):
             flash('Senha igual a senha atual', category='error')
+        elif len(senha1) < 7 or len(senha1) > 150:
+            flash('Senha deve ter entre 7 e 150 caracteres', category='error')
         elif senha1 != senha2:
             flash('Senhas nao coincidem', category='error')
-        elif len(senha1) < 7:
-            flash('Senha muito curta', category='error')
         else:
             user.senha = generate_password_hash(senha1, method='sha256')
             db.session.commit()
